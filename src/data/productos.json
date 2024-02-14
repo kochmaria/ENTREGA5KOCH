@@ -1,0 +1,112 @@
+[
+    { 
+        "id": "1",
+        "title": "Sennheiser HD 560S",
+        "description": "Today’s audiophiles monitor their music with measured purpose on a wide range of devices from headphone amplifiers, audio interfaces, computers, and more. The HD 560S delivers the linear performance required by analytical audio enthusiasts at a breakthrough value, allowing the listener to have an honest look inside their music whether for pleasure or productivity.",
+        "price": "USD 200",
+        "image": "",
+        "category": "Headphones"
+    },
+    { 
+        "id": "2",
+        "title": "AirPods Max",
+        "description": "AirPods Max combine high-fidelity audio with industry-leading Active Noise Cancellation to deliver an unparalleled listening experience. Each part of their custom-built driver works to produce sound with ultra-low distortion across the audible range.",
+        "price": "USD 500",
+        "image": "/",
+        "category": "Headphones"
+    },
+    { 
+        "id": "3",
+        "title": "JBL Headphones",
+        "description": "It features the renowned JBL Pure Bass sound, which can be found in the most famous venues all around the world.",
+        "price": "USD 50",
+        "image": "",
+        "category": "Headphones"
+    },
+    {
+        "id": "4",
+        "title": " HyperX Cloud Alpha",
+        "description": "The return of the king. The HyperX Cloud Alpha is the best gaming headset, delivering fantastic audio with plenty of bass response all for a low price. It's comfortable and the microphone stands up to scrutiny. You can't go wrong.",
+        "price": "USD 300",
+        "image": "",
+        "category": "Gamers"
+    },
+    {
+        "id": "5",
+        "title": "Corsair HS55 Stereo",
+        "description": "The Corsair HS55 Stereo is the best budget gaming headset and improves on the HS50 with better comfort and sound. It has soft earcups, a light weight and a detachable mic. It has a simple design and no extra features, but it is great value.",
+        "price": "USD 250",
+        "image": "",
+        "category": "Gamers"
+    },
+    {
+        "id": "6",
+        "title": "Headphones Sony",
+        "description": "Next-level music with Edge-AI, co-developed with Sony Music Studios Tokyo",
+        "price": "USD 150",
+        "image": "/Users/koch/Desktop/app/my-app/img/jblhead.webp",
+        "category": "Headphones"
+    }, 
+    {
+        "id": "7",
+        "title": " HyperX Cloud Alpha Wireless",
+        "description": "The Cloud Alpha Wireless is the best wireless gaming headset for PC gaming. It has superb sound, a clear mic, and DTS surround sound. It’s also light and comfy, with a whopping 300-hour battery life. It’s the best wireless headset we’ve tested so far.  ",
+        "price": "USD 300",
+        "image": "",
+        "category": "Gamers"
+    }, 
+    {
+        "id": "8",
+        "title": "Apple AirPods Pro Earbuds",
+        "description": "Improved sound, Volume controls, Transparency mode creates little wind noise",
+        "price": "USD 150",
+        "image": "",
+        "category": "Runners"
+    },
+    {
+        "id": "9",
+        "title": " HyperX Cloud Alpha Wireless",
+        "description": "The Cloud Alpha Wireless is the best wireless gaming headset for PC gaming. It has superb sound, a clear mic, and DTS surround sound. It’s also light and comfy, with a whopping 300-hour battery life. It’s the best wireless headset we’ve tested so far.  ",
+        "price": "USD 300",
+        "image": "",
+        "category": "Runners"
+    }, 
+    {
+        "id": "10",
+        "title": " Jabra Elite 8 Active",
+        "description": "Dolby-quality audio, Six mic call tech (conversations heard easier in wind, crowds)",
+        "price": "USD 50",
+        "image": "",
+        "category": "Runners"
+    }, 
+    {
+        "id": "11",
+        "title": " Sivga Oriole",
+        "description": " If your budget is what it is, Sivga sets the new benchmark for $150 headphones here – and the classy wooden finish looks far more expensive than it is. They're a real bargain. ",
+        "price": "USD 60",
+        "image": "",
+        "category": "Wire"
+    }, 
+    {
+        "id": "12",
+        "title": " Meze Audio Liric",
+        "description": "The price and configuration means they aren’t for everyone – and you need a high-end amp amp to drive them. But you’re in for a treat if they suit you.",
+        "price": "USD 300",
+        "image": "",
+        "category": "Wire"
+    }, 
+    {
+        "id": "13",
+        "title": " Bose Noise Cancelling Headphones 700 ",
+        "description": "These over-ear headphones deliver excellent noise cancellation in a comfortable, lightweight design that’s traveler friendly—but they carry a high price.",
+        "price": "USD 170",
+        "image": "",
+        "category": "Noise Cancelling"
+    }
+
+
+
+
+
+ 
+]
