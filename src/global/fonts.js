@@ -1,4 +1,3 @@
 export const fonts = {
-    OpenSans : require ('../../assets/fonts/Open_Sans'),
-
-}
+    OpenSans: require('../../assets/fonts/OpenSans/OpenSans-Italic-VariableFont_wdth,wght.ttfpp'),
+};

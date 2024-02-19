@@ -1,6 +1,7 @@
-
+// Card.jsx
 import { View, StyleSheet } from 'react-native';
-import {colors} from '../global/colors'
+import { colors } from '../global/colors';
+
 const Card = ({ children }) => {
     return (
         <View style={styles.container}>
@@ -25,6 +26,7 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Card; 
+export default Card;
+
 
 
