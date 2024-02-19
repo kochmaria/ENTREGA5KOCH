@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { View, FlatList, Text, StyleSheet, TextInput, Pressable } from 'react-native';
 import allProducts from '../data/productos.json';
@@ -6,29 +5,24 @@ import ProductItem from '../components/ProductItem';
 import RemoveModal from '../components/RemoveModal';
 import { AntDesign } from '@expo/vector-icons';
 
-function ItemListCategories({ category }) {
+function ItemListCategories() {
   const [products, setProducts] = useState([]);
   const [keyword, setKeyword] = useState('');
-  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [selectedProduct, setSelectedProduct] = useState(null); 
 
   useEffect(() => {
-    if (category) {
-      const filteredProducts = allProducts.filter(
-        (product) => product.category === category
-      );
-      const filteredByKeyword = filteredProducts.filter((product) =>
-        product.title.toLowerCase().includes(keyword.toLowerCase())
-      );
-      setProducts(filteredByKeyword);
-    }
-  }, [category, keyword]);
+    const filtered = allProducts.filter(product =>
+      product.title.toLowerCase().includes(keyword.toLowerCase())
+    );
+    setFilteredProducts(filtered);
+  }, [keyword]);
 
   const handleRemoveProduct = (product) => {
     setSelectedProduct(product);
   };
 
   const handleAddProduct = (product) => {
-    
     console.log('Product added:', product);
   };
 
@@ -46,7 +40,7 @@ function ItemListCategories({ category }) {
         </Pressable>
       </View>
       <FlatList
-        data={products}
+        data={filteredProducts}
         renderItem={({ item }) => (
           <View style={styles.productContainer}>
             <ProductItem product={item} />
@@ -60,14 +54,14 @@ function ItemListCategories({ category }) {
             </View>
           </View>
         )}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id.toString()}
       />
+      {/* Mostrar RemoveModal si selectedProduct no es nulo */}
       {selectedProduct && (
         <RemoveModal
           modalVisible={selectedProduct !== null}
           closeModal={() => setSelectedProduct(null)}
           removeItem={() => {
-            
             console.log('Product removed:', selectedProduct);
             setSelectedProduct(null);
           }}
