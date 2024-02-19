@@ -25,5 +25,6 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Card; // Exportación por defecto aquí
+export default Card; 
+
 

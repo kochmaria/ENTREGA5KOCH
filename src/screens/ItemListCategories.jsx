@@ -1,32 +1,123 @@
-import { Text, View , FlatList} from "react-native";
-import allProducts from '../data/productos.json'
-import ProductItem from "../components/ProductItem";
-import Search from "../components/Search";
-import { useEffect, useState } from "react";
 
-function ItemListCategories ({category}) {
-   const [products, setProducts] = useState([]);
-   const [keyword, setKeyword] = useState ("");
+import React, { useState, useEffect } from 'react';
+import { View, FlatList, Text, StyleSheet, TextInput, Pressable } from 'react-native';
+import allProducts from '../data/productos.json';
+import ProductItem from '../components/ProductItem';
+import RemoveModal from '../components/RemoveModal';
+import { AntDesign } from '@expo/vector-icons';
 
-   useEffect (() => {
+function ItemListCategories({ category }) {
+  const [products, setProducts] = useState([]);
+  const [keyword, setKeyword] = useState('');
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  useEffect(() => {
     if (category) {
-        const products = allProducts.filter ((product)=>product.category === category)
-        const filterProducts = products.filter ((product)=> product.title.includes(keyword) );
-        setProducts (filterProducts)
+      const filteredProducts = allProducts.filter(
+        (product) => product.category === category
+      );
+      const filteredByKeyword = filteredProducts.filter((product) =>
+        product.title.toLowerCase().includes(keyword.toLowerCase())
+      );
+      setProducts(filteredByKeyword);
     }
-   }, [category, keyword])
+  }, [category, keyword]);
 
+  const handleRemoveProduct = (product) => {
+    setSelectedProduct(product);
+  };
 
+  const handleAddProduct = (product) => {
+    
+    console.log('Product added:', product);
+  };
 
-    return (
-        <View> 
-           <Search keyword = {keyword}onSearch ={setKeyword}></Search>
-            <FlatList
-                data={products}
-                renderItem={({item})=> <ProductItem product= {item}/>}
-                keyExtractor={(item)=> item.id}/>
-        </View>
-    )
+  return (
+    <View style={{ flex: 1 }}>
+      <View style={styles.searchContainer}>
+        <TextInput
+          style={styles.input}
+          onChangeText={setKeyword}
+          value={keyword}
+          placeholder="Buscar producto"
+        />
+        <Pressable style={styles.searchIcon} onPress={() => console.log('Search pressed')}>
+          <AntDesign name="search1" size={24} color="black" />
+        </Pressable>
+      </View>
+      <FlatList
+        data={products}
+        renderItem={({ item }) => (
+          <View style={styles.productContainer}>
+            <ProductItem product={item} />
+            <View style={styles.buttonContainer}>
+              <Pressable onPress={() => handleAddProduct(item)}>
+                <Text style={styles.addButton}>Agregar</Text>
+              </Pressable>
+              <Pressable onPress={() => handleRemoveProduct(item)}>
+                <Text style={styles.removeButton}>Eliminar</Text>
+              </Pressable>
+            </View>
+          </View>
+        )}
+        keyExtractor={(item) => item.id}
+      />
+      {selectedProduct && (
+        <RemoveModal
+          modalVisible={selectedProduct !== null}
+          closeModal={() => setSelectedProduct(null)}
+          removeItem={() => {
+            
+            console.log('Product removed:', selectedProduct);
+            setSelectedProduct(null);
+          }}
+        />
+      )}
+    </View>
+  );
 }
+
+const styles = StyleSheet.create({
+  searchContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    paddingBottom: 10,
+  },
+  input: {
+    borderColor: 'gray',
+    borderWidth: 1,
+    padding: 10,
+    flex: 1,
+    marginTop: 20
+  },
+  searchIcon: {
+    marginLeft: 10,
+  },
+  productContainer: {
+    flexDirection: 'column',
+    paddingHorizontal: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
+    paddingVertical: 10,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    marginTop: 10,
+  },
+  addButton: {
+    color: 'green',
+    fontSize: 16,
+    paddingHorizontal: 10,
+    marginRight: 10,
+  },
+  removeButton: {
+    color: 'red',
+    fontSize: 16,
+    paddingHorizontal: 10,
+  },
+});
 
 export default ItemListCategories;
