@@ -5,18 +5,19 @@ import ProductItem from '../components/ProductItem';
 import RemoveModal from '../components/RemoveModal';
 import { AntDesign } from '@expo/vector-icons';
 
-function ItemListCategories() {
+function ItemListCategories({ category }) {
   const [products, setProducts] = useState([]);
   const [keyword, setKeyword] = useState('');
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [selectedProduct, setSelectedProduct] = useState(null); 
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
     const filtered = allProducts.filter(product =>
+      product.category.toLowerCase() === category.toLowerCase() &&
       product.title.toLowerCase().includes(keyword.toLowerCase())
     );
     setFilteredProducts(filtered);
-  }, [keyword]);
+  }, [category, keyword]);
 
   const handleRemoveProduct = (product) => {
     setSelectedProduct(product);
@@ -56,7 +57,6 @@ function ItemListCategories() {
         )}
         keyExtractor={(item) => item.id.toString()}
       />
-      {/* Mostrar RemoveModal si selectedProduct no es nulo */}
       {selectedProduct && (
         <RemoveModal
           modalVisible={selectedProduct !== null}

@@ -16,3 +16,4 @@ function Categories({setCategorySelected}) {
 }
 
 export default Categories;
+
