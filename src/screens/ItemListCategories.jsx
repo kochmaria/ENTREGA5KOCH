@@ -29,12 +29,16 @@ function ItemListCategories({ category }) {
 
   return (
     <View style={{ flex: 1 }}>
+       <Pressable style={styles.goBackContainer} onPress={() => console.log('Go back pressed')}>
+         <AntDesign name="arrowleft" size={24} color="black" />
+         <Text style={styles.goBackText}>Go back to home</Text>
+      </Pressable>
       <View style={styles.searchContainer}>
         <TextInput
           style={styles.input}
           onChangeText={setKeyword}
           value={keyword}
-          placeholder="Buscar producto"
+          placeholder="Search product"
         />
         <Pressable style={styles.searchIcon} onPress={() => console.log('Search pressed')}>
           <AntDesign name="search1" size={24} color="black" />
@@ -47,10 +51,10 @@ function ItemListCategories({ category }) {
             <ProductItem product={item} />
             <View style={styles.buttonContainer}>
               <Pressable onPress={() => handleAddProduct(item)}>
-                <Text style={styles.addButton}>Agregar</Text>
+                <Text style={styles.addButton}>Add</Text>
               </Pressable>
               <Pressable onPress={() => handleRemoveProduct(item)}>
-                <Text style={styles.removeButton}>Eliminar</Text>
+                <Text style={styles.removeButton}>Remove</Text>
               </Pressable>
             </View>
           </View>
@@ -72,6 +76,18 @@ function ItemListCategories({ category }) {
 }
 
 const styles = StyleSheet.create({
+goBackContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#ddd',
+        padding: 10,
+        borderRadius: 5,
+        marginTop: 20,
+},
+goBackText: {
+        marginLeft: 5,
+},
   searchContainer: {
     flexDirection: 'row',
     alignItems: 'center',
