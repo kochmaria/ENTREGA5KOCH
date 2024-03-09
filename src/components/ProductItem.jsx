@@ -1,32 +1,63 @@
 
-import { View, StyleSheet, Text } from 'react-native';
+import {  StyleSheet, Text, Image, useWindowDimensions, Pressable } from 'react-native';
 import Card from './Card';
 import { colors } from '../global/colors'; 
 
-const ProductItem = ({ product }) => {
+const ProductItem = ({ product, setProductDetailId }) => { 
+    const {width, height} = useWindowDimensions ();
+    console.log (width, height); 
+
+
+
+
   return (
-    <Card>
-      <Text style={styles.title}>{product.title}</Text>
-      <Text style={styles.price}>Price: {product.price}</Text>
-      <Text style={styles.description}>{product.description}</Text>
-    </Card>
+    <>
+      <Pressable onPress={() => setProductDetailId (product.id)}>
+        <Card>
+           <Text style={ width < 400 ? styles.titleMin : styles.title}>{product.title}</Text>
+      
+           <Image style= {  styles.image} source={{uri: product.image}} />
+           <Text style={ width < 400 ? styles.priceMin : styles.price}>Price: {product.price}</Text>
+        </Card>
+       </Pressable>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
     title: {
-      fontSize: 20,
+      fontSize: 25,
       fontWeight: 'bold',
       marginBottom: 5,
+      width: 80
+    },
+    titleMin: {
+        fontSize: 19,
+      fontWeight: 'bold',
+      marginBottom: 5,
+      width: "80%"
     },
     price: {
       color: colors.pink_300, 
       marginBottom: 5,
       fontSize: 20,
+      width: 95
     },
-    description: {
-      color: colors.pink_400, 
+    priceMin: {
+        color: colors.pink_300, 
+        marginBottom: 5,
+        fontSize: 16,
+        width: "95%",
+        fontWeight: 'bold'
+        
+
     },
+    
+    image : {
+        width: "70%",
+        height: 153
+    },
+   
   });
   
   export default ProductItem;

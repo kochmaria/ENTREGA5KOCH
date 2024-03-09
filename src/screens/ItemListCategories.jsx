@@ -5,8 +5,7 @@ import ProductItem from '../components/ProductItem';
 import RemoveModal from '../components/RemoveModal';
 import { AntDesign } from '@expo/vector-icons';
 
-function ItemListCategories({ category }) {
-  const [products, setProducts] = useState([]);
+function ItemListCategories({ category, setCategorySelected, setProductDetailId }) {
   const [keyword, setKeyword] = useState('');
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -29,7 +28,7 @@ function ItemListCategories({ category }) {
 
   return (
     <View style={{ flex: 1 }}>
-       <Pressable style={styles.goBackContainer} onPress={() => console.log('Go back pressed')}>
+       <Pressable style={styles.goBackContainer} onPress={() => setCategorySelected ('')}>
          <AntDesign name="arrowleft" size={24} color="black" />
          <Text style={styles.goBackText}>Go back to home</Text>
       </Pressable>
@@ -48,7 +47,8 @@ function ItemListCategories({ category }) {
         data={filteredProducts}
         renderItem={({ item }) => (
           <View style={styles.productContainer}>
-            <ProductItem product={item} />
+            <ProductItem product={item} setProductDetailId={setProductDetailId} />
+
             <View style={styles.buttonContainer}>
               <Pressable onPress={() => handleAddProduct(item)}>
                 <Text style={styles.addButton}>Add</Text>
@@ -76,18 +76,18 @@ function ItemListCategories({ category }) {
 }
 
 const styles = StyleSheet.create({
-goBackContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#ddd',
-        padding: 10,
-        borderRadius: 5,
-        marginTop: 20,
-},
-goBackText: {
-        marginLeft: 5,
-},
+  goBackContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#ddd',
+    padding: 10,
+    borderRadius: 5,
+    marginTop: 20,
+  },
+  goBackText: {
+    marginLeft: 5,
+  },
   searchContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -131,3 +131,4 @@ goBackText: {
 });
 
 export default ItemListCategories;
+
