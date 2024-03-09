@@ -26,7 +26,7 @@ const ItemDetail = ({ productDetailId, returnToCategories }) => {
             <View style={styles.contentContainer}>
                 <Pressable style={styles.returnButton} onPress={returnToCategories}>
                     <AntDesign name="arrowleft" size={24} color="black" />
-                    <Text style={styles.returnText}>Go Back </Text>
+                    <Text style={styles.returnText}>Go Back</Text>
                 </Pressable>
                 <Card style={styles.card}>
                    <Text style={styles.title}>{product.title}</Text>
@@ -36,6 +36,9 @@ const ItemDetail = ({ productDetailId, returnToCategories }) => {
                   <Text style={styles.description}>{product.description}</Text>
                    <Text style={styles.price}>Price: {product.price}</Text>
                 </Card>
+                <Pressable style={styles.buyNowButton} onPress={() => console.log('Buy Now pressed')}>
+                    <Text style={styles.buyNowText}>Buy Now</Text>
+                </Pressable>
             </View>
         </ScrollView>
     );
@@ -52,8 +55,6 @@ const styles = StyleSheet.create({
     },
     returnButton: {
         flexDirection: 'row',
-        
-        
         justifyContent: 'center',
         backgroundColor: '#ddd',
         padding: 5,
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         flexDirection: 'row',
         alignItems: 'center',
-       justifyContent: 'flex-end',
+        justifyContent: 'flex-end',
         marginTop: 10,
     },
     returnText: {
@@ -94,12 +95,22 @@ const styles = StyleSheet.create({
         color: 'green',
         marginBottom: 10,
     },
-   image: {
-    width: 200,
-    height: 200,
-    
-
-   }
+    image: {
+        width: 200,
+        height: 200,
+    },
+    buyNowButton: {
+        backgroundColor: '#878787',
+        padding: 10,
+        borderRadius: 5,
+        marginTop: 20,
+    },
+    buyNowText: {
+        color: 'white',
+        fontSize: 18,
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
 });
 
 export default ItemDetail;
