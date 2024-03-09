@@ -1,13 +1,12 @@
-import React from 'react';
-import { View, Button, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import Header from '../components/Header';
 import Categories from '../components/Categories';
 
-function Home({ setCategorySelected }) {
+function Home({ navigation }) {
   return (
     <View style={{ flex: 1 }}>
       <Header title={'Home'} />
-      <Categories setCategorySelected={setCategorySelected} />
+      <Categories navigation={navigation} />
     </View>
   );
 }

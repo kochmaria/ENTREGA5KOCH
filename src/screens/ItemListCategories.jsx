@@ -5,7 +5,8 @@ import ProductItem from '../components/ProductItem';
 import RemoveModal from '../components/RemoveModal';
 import { AntDesign } from '@expo/vector-icons';
 
-function ItemListCategories({ category, setCategorySelected, setProductDetailId }) {
+function ItemListCategories({ route, navigation }) {
+  const { category } = route.params;
   const [keyword, setKeyword] = useState('');
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -28,7 +29,7 @@ function ItemListCategories({ category, setCategorySelected, setProductDetailId 
 
   return (
     <View style={{ flex: 1 }}>
-       <Pressable style={styles.goBackContainer} onPress={() => setCategorySelected ('')}>
+       <Pressable style={styles.goBackContainer} onPress={() => navigation.goBack()}>
          <AntDesign name="arrowleft" size={24} color="black" />
          <Text style={styles.goBackText}>Go back to home</Text>
       </Pressable>
@@ -47,7 +48,7 @@ function ItemListCategories({ category, setCategorySelected, setProductDetailId 
         data={filteredProducts}
         renderItem={({ item }) => (
           <View style={styles.productContainer}>
-            <ProductItem product={item} setProductDetailId={setProductDetailId} />
+            <ProductItem product={item} />
 
             <View style={styles.buttonContainer}>
               <Pressable onPress={() => handleAddProduct(item)}>
@@ -93,6 +94,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 20,
     paddingBottom: 10,
+ 
+
   },
   input: {
     borderColor: 'gray',
@@ -131,4 +134,3 @@ const styles = StyleSheet.create({
 });
 
 export default ItemListCategories;
-
