@@ -3,7 +3,7 @@ import {  StyleSheet, Text, Image, useWindowDimensions, Pressable } from 'react-
 import Card from './Card';
 import { colors } from '../global/colors'; 
 
-const ProductItem = ({ product, setProductDetailId }) => { 
+const ProductItem = ({ product, navigation  }) => { 
     const {width, height} = useWindowDimensions ();
     console.log (width, height); 
 
@@ -12,7 +12,7 @@ const ProductItem = ({ product, setProductDetailId }) => {
 
   return (
     <>
-      <Pressable onPress={() => setProductDetailId (product.id)}>
+      <Pressable onPress={() =>  navigation.navigate("ItemDetail", {id: product.id}) } >
         <Card>
            <Text style={ width < 400 ? styles.titleMin : styles.title}>{product.title}</Text>
       

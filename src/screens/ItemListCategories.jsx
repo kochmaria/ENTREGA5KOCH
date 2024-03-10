@@ -30,8 +30,7 @@ function ItemListCategories({ route, navigation }) {
   return (
     <View style={{ flex: 1 }}>
        <Pressable style={styles.goBackContainer} onPress={() => navigation.goBack()}>
-         <AntDesign name="arrowleft" size={24} color="black" />
-         <Text style={styles.goBackText}>Go back to home</Text>
+         
       </Pressable>
       <View style={styles.searchContainer}>
         <TextInput
@@ -48,7 +47,7 @@ function ItemListCategories({ route, navigation }) {
         data={filteredProducts}
         renderItem={({ item }) => (
           <View style={styles.productContainer}>
-            <ProductItem product={item} />
+            <ProductItem product={item} navigation={ navigation}/>
 
             <View style={styles.buttonContainer}>
               <Pressable onPress={() => handleAddProduct(item)}>
@@ -77,18 +76,8 @@ function ItemListCategories({ route, navigation }) {
 }
 
 const styles = StyleSheet.create({
-  goBackContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#ddd',
-    padding: 10,
-    borderRadius: 5,
-    marginTop: 20,
-  },
-  goBackText: {
-    marginLeft: 5,
-  },
+  
+  
   searchContainer: {
     flexDirection: 'row',
     alignItems: 'center',

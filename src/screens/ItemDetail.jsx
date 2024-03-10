@@ -2,16 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, Text, Image, Pressable, ScrollView } from 'react-native';
 import allProducts from '../data/productos.json';
 import { AntDesign } from '@expo/vector-icons';
-import { colors } from '../global/colors';
-import Card from '../components/Card'; // Importamos el componente de tarjeta
 
-const ItemDetail = ({ productDetailId, returnToCategories }) => {
+import Card from '../components/Card'; 
+
+const ItemDetail = ({ navigation, route }) => { 
     const [product, setProduct] = useState(null);
 
+    
+    const { id } = route.params;
+
     useEffect(() => {
-        const productFound = allProducts.find(product => product.id === productDetailId);
+        const productFound = allProducts.find(product => product.id === id);
         setProduct(productFound);
-    }, [productDetailId]); 
+    }, [id]); 
 
     if (!product) {
         return (
@@ -24,17 +27,17 @@ const ItemDetail = ({ productDetailId, returnToCategories }) => {
     return (
         <ScrollView contentContainerStyle={styles.scrollContainer}>
             <View style={styles.contentContainer}>
-                <Pressable style={styles.returnButton} onPress={returnToCategories}>
+                <Pressable style={styles.returnButton} onPress={() => navigation.goBack()}>
                     <AntDesign name="arrowleft" size={24} color="black" />
                     <Text style={styles.returnText}>Go Back</Text>
                 </Pressable>
                 <Card style={styles.card}>
-                   <Text style={styles.title}>{product.title}</Text>
-                  <View style={styles.imageContainer}>
-                  <Image style={styles.image} source={{ uri: product.image }} />
-                   </View>
-                  <Text style={styles.description}>{product.description}</Text>
-                   <Text style={styles.price}>Price: {product.price}</Text>
+                    <Text style={styles.title}>{product.title}</Text>
+                    <View style={styles.imageContainer}>
+                        <Image style={styles.image} source={{ uri: product.image }} />
+                    </View>
+                    <Text style={styles.description}>{product.description}</Text>
+                    <Text style={styles.price}>Price: {product.price}</Text>
                 </Card>
                 <Pressable style={styles.buyNowButton} onPress={() => console.log('Buy Now pressed')}>
                     <Text style={styles.buyNowText}>Buy Now</Text>
@@ -114,7 +117,3 @@ const styles = StyleSheet.create({
 });
 
 export default ItemDetail;
-
-
-
-
