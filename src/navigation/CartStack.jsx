@@ -4,10 +4,16 @@ const Stack = createNativeStackNavigator()
 
 const CartStack = () => {
     return (
-        <Stack.Navigator>
+        <Stack.Navigator 
+          
+          
+        >
+         
          <Stack.Screen name="Cart" component={Cart}/>
 
         </Stack.Navigator>
     )
 
 }
+
+export default CartStack

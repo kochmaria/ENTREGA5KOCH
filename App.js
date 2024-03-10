@@ -1,12 +1,6 @@
 
-import React, { useState } from 'react';
-import Navigator from './src/navigation/Navigator';
+import TabNavigator from './src/navigation/TabNavigator';
 
 export default function App() {
-  
-
- 
-
-  return <Navigator/>
+  return <TabNavigator />;
 }
-
