@@ -28,8 +28,7 @@ const ItemDetail = ({ navigation, route }) => {
         <ScrollView contentContainerStyle={styles.scrollContainer}>
             <View style={styles.contentContainer}>
                 <Pressable style={styles.returnButton} onPress={() => navigation.goBack()}>
-                    <AntDesign name="arrowleft" size={24} color="black" />
-                    <Text style={styles.returnText}>Go Back</Text>
+                    
                 </Pressable>
                 <Card style={styles.card}>
                     <Text style={styles.title}>{product.title}</Text>
@@ -56,21 +55,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingVertical: 20,
     },
-    returnButton: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        backgroundColor: '#ddd',
-        padding: 5,
-        borderRadius: 5,
-        marginBottom: 10,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-        marginTop: 10,
-    },
-    returnText: {
-        marginLeft: 5,
-    },
+   
+   
     card: {
         width: '90%',
         alignItems: 'center',

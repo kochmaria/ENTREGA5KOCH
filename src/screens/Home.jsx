@@ -7,7 +7,7 @@ function Home({ navigation }) {
   return (
     <View style={{ flex: 1 }}>
       <ScrollView>
-        <Header title={'Home'} />
+        
       
         <Categories navigation={navigation} />
       </ScrollView>
