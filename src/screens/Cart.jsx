@@ -12,9 +12,8 @@ const Cart = () => {
         calculateTotal(allCartItems);
     }, []);
 
-    const calculateTotal = (items) => {
+    const style =calculateTotal = (items) => {
         const totalPrice = items.reduce((acc, currentItem) => {
-            
             const price = parseFloat(currentItem.price.split(' ')[1]);
             return acc + (currentItem.quantity * price);
         }, 0);
@@ -36,12 +35,14 @@ const Cart = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: '', 
     },
     total: {
         fontSize: 20,
         fontWeight: 'bold',
         marginTop: 10,
         textAlign: 'center',
+        backgroundColor: "#D1BECF"
     },
     totalAmount: {
         fontSize: 20,
@@ -50,7 +51,7 @@ const styles = StyleSheet.create({
     itemContainer: {
         padding: 10,
         borderBottomWidth: 1,
-        borderBottomColor: '#ccc',
+       
     },
 });
 
