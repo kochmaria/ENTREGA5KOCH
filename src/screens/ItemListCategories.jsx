@@ -1,37 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { View, FlatList, Text, StyleSheet, TextInput, Pressable } from 'react-native';
-import allProducts from '../data/productos.json';
 import ProductItem from '../components/ProductItem';
+import { useSelector } from 'react-redux';
 import RemoveModal from '../components/RemoveModal';
 import { AntDesign } from '@expo/vector-icons';
 
-function ItemListCategories({ route, navigation }) {
-  const { category } = route.params;
+function ItemListCategories({ navigation }) {
+  const productsFilteredByCategory = useSelector(state => state.shopReducer.value.productsFilteredByCategory);
   const [keyword, setKeyword] = useState('');
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
-    const filtered = allProducts.filter(product =>
-      product.category.toLowerCase() === category.toLowerCase() &&
-      product.title.toLowerCase().includes(keyword.toLowerCase())
-    );
+    const filtered = productsFilteredByCategory.filter(product => product.title.includes(keyword));
     setFilteredProducts(filtered);
-  }, [category, keyword]);
+  }, [productsFilteredByCategory, keyword]);
 
-  const handleRemoveProduct = (product) => {
-    setSelectedProduct(product);
+  const handleAddProduct = product => {
+    console.log('Product added:', product);
   };
 
-  const handleAddProduct = (product) => {
-    console.log('Product added:', product);
+  const handleRemoveProduct = product => {
+    setSelectedProduct(product);
   };
 
   return (
     <View style={{ flex: 1 }}>
-       <Pressable style={styles.goBackContainer} onPress={() => navigation.goBack()}>
-         
-      </Pressable>
       <View style={styles.searchContainer}>
         <TextInput
           style={styles.input}
@@ -47,8 +41,7 @@ function ItemListCategories({ route, navigation }) {
         data={filteredProducts}
         renderItem={({ item }) => (
           <View style={styles.productContainer}>
-            <ProductItem product={item} navigation={ navigation}/>
-
+            <ProductItem product={item} navigation={navigation} />
             <View style={styles.buttonContainer}>
               <Pressable onPress={() => handleAddProduct(item)}>
                 <Text style={styles.addButton}>Add</Text>
@@ -59,7 +52,7 @@ function ItemListCategories({ route, navigation }) {
             </View>
           </View>
         )}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={item => item.id.toString()}
       />
       {selectedProduct && (
         <RemoveModal
@@ -76,22 +69,18 @@ function ItemListCategories({ route, navigation }) {
 }
 
 const styles = StyleSheet.create({
-  
-  
   searchContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 20,
     paddingBottom: 10,
- 
-
   },
   input: {
     borderColor: 'gray',
     borderWidth: 1,
     padding: 10,
     flex: 1,
-    marginTop: 20
+    marginTop: 20,
   },
   searchIcon: {
     marginLeft: 10,
