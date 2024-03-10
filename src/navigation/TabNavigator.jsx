@@ -3,9 +3,11 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import ShopStack from '../navigation/ShopStack';
 import CartStack from "../navigation/CartStack";
+import OrdersStack from '../navigation/OrdersStack';
 import { StyleSheet, Text, View } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 
@@ -50,6 +52,21 @@ const TabNavigator = () => {
                             </View>
                         )
                     }}
+                />
+                <Tab.Screen 
+                    name="OrdersTab" 
+                    component={OrdersStack} 
+                    options={{
+                        tabBarIcon: ({ focused }) => (
+                            <View style={{ alignItems: 'center' }}>
+                                <Feather 
+                                    name="list" 
+                                    size={24} 
+                                    color={focused ? "black" : "grey"} />
+                                <Text style={{ color: focused ? "black" : "grey" }}> Orders </Text>
+                            </View>
+                        )
+                    }} 
                 />
             </Tab.Navigator>
         </NavigationContainer>
