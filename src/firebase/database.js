@@ -1,0 +1,1 @@
+export const base_url = "https://tiendadeauriculares-koch-default-rtdb.firebaseio.com/"
