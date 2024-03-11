@@ -46,7 +46,9 @@ function ItemListCategories({ navigation }) {
               <Pressable onPress={() => handleAddProduct(item)}>
                 <Text style={styles.addButton}>Add</Text>
               </Pressable>
-              
+              <Pressable onPress={() => handleRemoveProduct(item)}>
+                <Text style={styles.removeButton}>Remove</Text>
+              </Pressable>
             </View>
           </View>
         )}
